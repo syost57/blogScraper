@@ -1,0 +1,29 @@
+{
+  "name": "blogscraper",
+  "version": "1.0.0",
+  "description": "Scrape blogs",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "jest test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syost57/blogScraper.git"
+  },
+  "author": "syost571",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syost57/blogScraper/issues"
+  },
+  "homepage": "https://github.com/syost57/blogScraper#readme",
+  "dependencies": {
+    "axios": "^1.1.2",
+    "jsdom": "^20.0.1"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^20.0.0",
+    "jest": "^29.1.2",
+    "ts-node": "^10.9.1"
+  }
+}
