@@ -19,7 +19,10 @@
   "homepage": "https://github.com/syost57/blogScraper#readme",
   "dependencies": {
     "axios": "^1.1.2",
-    "jsdom": "^20.0.1"
+    "discord-interactions": "^3.2.0",
+    "discord.js": "^14.6.0",
+    "jsdom": "^20.0.1",
+    "nodemon": "^2.0.20"
   },
   "devDependencies": {
     "@types/jsdom": "^20.0.0",
