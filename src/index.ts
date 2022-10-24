@@ -1,12 +1,14 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
 import { fetchBlogUpdates } from './authorBlogs';
 import { initCommands } from './initCommands';
 import configFile from '../config.json';
+import { mongoConnect } from './database';
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 
-client.on('ready', () => {
-  console.log(`Logged in as Jeeves!`);
+client.on('ready', async () => {
+    const channel = await client.channels.cache.get(configFile.mainChannel) as TextChannel;
+    channel.send("Jeeves is online!");
 });
 
 client.on('interactionCreate', async interaction => {
@@ -21,3 +23,4 @@ client.on('interactionCreate', async interaction => {
 
 client.login(configFile.clientToken);
 initCommands();
+mongoConnect().catch(console.error);

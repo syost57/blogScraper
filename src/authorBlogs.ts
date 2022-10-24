@@ -1,6 +1,7 @@
 
 import { JSDOM } from 'jsdom';
 import axios from 'axios';
+import authors from './authors.json'
 
 interface BlogMetaData {
     author?: string,
@@ -9,34 +10,6 @@ interface BlogMetaData {
     previousMostRecentArticle: string,
     linkHTML: string
 }
-
-const andrewRowe : BlogMetaData = {
-    author: "Andrew Rowe",
-    blogUrl: "https://andrewkrowe.wordpress.com",
-    articleHTMLElement: 'article',
-    previousMostRecentArticle: 'post-2383',
-    linkHTML: 'h1 a'
-}
-
-
-const willWight : BlogMetaData = {
-    author: "Will Wight",
-    blogUrl: "https://www.willwight.com/a-blog-of-dubious-intent",
-    articleHTMLElement: "div.blog-post",
-    previousMostRecentArticle: 'blog-post-403323354847902201',
-    linkHTML: 'div h2 a'
-}
-
-const rfKuang : BlogMetaData = {
-    author: "Rebbeca F Kuang",
-    blogUrl: "https://rfkuang.com",
-    articleHTMLElement: 'article',
-    previousMostRecentArticle: 'post-2053',
-    linkHTML: 'h2 a'
-}
-const blogs = [andrewRowe, willWight, rfKuang]
-
-
 
 const getBlogDom = async (blogUrl:string) => {
 	return await axios.get(blogUrl);
@@ -56,7 +29,7 @@ const blogScraper = async (blog: BlogMetaData) => {
 }
 export const fetchBlogUpdates = async () => {
     let blogUpdateResults:any[] = []
-    for(const authorBlogData of blogs) {
+    for(const authorBlogData of authors) {
        let blogData = await blogScraper(authorBlogData);
        blogData && blogUpdateResults.push(blogData);
     };
