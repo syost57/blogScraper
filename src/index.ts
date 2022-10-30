@@ -2,9 +2,8 @@ import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
 import { fetchBlogUpdates } from './authorBlogs';
 import { initCommands } from './initCommands';
 import configFile from '../config.json';
-import { mongoConnect } from './database';
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.on('ready', async () => {
     const channel = await client.channels.cache.get(configFile.mainChannel) as TextChannel;
@@ -23,4 +22,3 @@ client.on('interactionCreate', async interaction => {
 
 client.login(configFile.clientToken);
 initCommands();
-mongoConnect().catch(console.error);
