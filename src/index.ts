@@ -14,9 +14,13 @@ client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return;
   if (interaction.commandName === 'authorblogs') {
     const authorBlogUpdates = await fetchBlogUpdates();
+    if(authorBlogUpdates.length > 0){
     for(const authorBlogUpdate of authorBlogUpdates){
-      authorBlogUpdate === authorBlogUpdates[0] ? await interaction.reply(authorBlogUpdate) : await interaction.followUp(authorBlogUpdate);
+      authorBlogUpdate === authorBlogUpdates[0] ? await interaction.reply(authorBlogUpdate.notificationText) : await interaction.followUp(authorBlogUpdate.notificationText);
     }
+  }else{
+    await interaction.reply('No new blog posts from registered authors at this time!')
+  }
 }
 });
 
