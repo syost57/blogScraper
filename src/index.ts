@@ -22,7 +22,7 @@ client.on('interactionCreate', async interaction => {
     await interaction.reply('No new blog posts from registered authors at this time!')
   }
 }
-});
+  });
 
 client.login(configFile.clientToken);
 initCommands();

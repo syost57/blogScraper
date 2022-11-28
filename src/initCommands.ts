@@ -2,7 +2,7 @@ const { REST, SlashCommandBuilder, Routes } = require('discord.js');
 import config from '../config.json';
 
 const commands = [
-	new SlashCommandBuilder().setName('authorblogs').setDescription('Fetches author commands!'),
+	new SlashCommandBuilder().setName('authorblogs').setDescription('Fetches author blog details!'),
 ]
 	.map(command => command.toJSON());
 
